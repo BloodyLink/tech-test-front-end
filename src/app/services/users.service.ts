@@ -13,13 +13,11 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   getAll() {
-    console.log('teni pololi');
-
     return this.http.get<any>(this.url);
   }
 
   getById(id: number) {
-    return this.http.get(this.url + id);
+    return this.http.get(this.url + '/' + id);
   }
 
   getByEmail(email: string) {

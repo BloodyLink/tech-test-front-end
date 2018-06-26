@@ -7,22 +7,20 @@ import { UsersService } from '../../services/index';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+  private users: any;
+
   constructor(private usersService: UsersService) {}
   usersDisplay() {
-    console.log('que ondi');
-
     this.usersService.getAll().subscribe(
       data => {
-        // if (data.status === 'OK') {
         console.log(data);
-        // }
+        this.users = data;
       },
       error => {}
     );
   }
 
   ngOnInit(): void {
-    console.log('holi');
     this.usersDisplay();
   }
 }
