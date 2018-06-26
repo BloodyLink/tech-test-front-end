@@ -1,13 +1,28 @@
-import { Component, OnInit } from "@angular/core";
-import { UsersService } from "../../services/users.service";
+import { Component, OnInit, Inject } from '@angular/core';
+import { UsersService } from '../../services/index';
 
 @Component({
-  selector: "app-name",
-  templateUrl: "./name.component.html",
-  styleUrls: ["./name.component.scss"]
+  selector: 'app-user',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.scss']
 })
-export class NameComponent implements OnInit {
-  constructor(private _usersService: UsersService) {}
+export class UsersComponent implements OnInit {
+  constructor(private usersService: UsersService) {}
+  usersDisplay() {
+    console.log('que ondi');
 
-  ngOnInit(): void {}
+    this.usersService.getAll().subscribe(
+      data => {
+        // if (data.status === 'OK') {
+        console.log(data);
+        // }
+      },
+      error => {}
+    );
+  }
+
+  ngOnInit(): void {
+    console.log('holi');
+    this.usersDisplay();
+  }
 }
